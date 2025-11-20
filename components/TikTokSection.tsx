@@ -6,40 +6,40 @@ const TIKTOK_DATA = [
     id: '7530126495008689422',
     url: 'https://www.tiktok.com/@itskarlabb/video/7530126495008689422',
     company: 'Kis Cafe',
-    views: '2.4M',
-    comments: '15.2k',
+    views: '30.2M',
+    comments: '36.5k',
     impact: 'Service Complaint'
   },
   {
     id: '7565632133260234014',
     url: 'https://www.tiktok.com/@kimmyk561/video/7565632133260234014',
     company: 'Texas Road House Steak',
-    views: '8.1M',
-    comments: '42.5k',
+    views: '18.4M',
+    comments: '52.1k',
     impact: 'Food Safety'
   },
   {
     id: '7569711258534939959',
     url: 'https://www.tiktok.com/@so_thats_toya/video/7569711258534939959',
     company: 'The Joule SPA texas',
-    views: '1.2M',
-    comments: '5.3k',
+    views: '6.7M',
+    comments: '15.3k',
     impact: 'Customer Service'
   },
   {
     id: '7540010763990224183',
     url: 'https://www.tiktok.com/@auroramccausland/video/7540010763990224183',
-    company: 'Signa Healthcare',
-    views: '5.5M',
-    comments: '28.1k',
+    company: 'Cigna Healthcare',
+    views: '9.2M',
+    comments: '31.8k',
     impact: 'Policy Backlash'
   },
   {
     id: '7562367991032155413',
     url: 'https://www.tiktok.com/@alexbiron/video/7562367991032155413',
     company: 'Limoncello Miami',
-    views: '3.9M',
-    comments: '12.8k',
+    views: '22.1M',
+    comments: '48.9k',
     impact: 'Viral Altercation'
   }
 ];
@@ -58,7 +58,7 @@ export const TikTokSection: React.FC = () => {
 
   return (
     <section className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div className="space-y-4">

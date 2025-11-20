@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, ChevronRight, Mail, PlayCircle, RefreshCw } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, ChevronRight, Mail } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { TikTokSection } from './components/TikTokSection';
-import { generateDashboardSimulation } from './services/geminiService';
-import { DashboardState, ScenarioType } from './types';
+import { DashboardState } from './types';
 
-// Initial Mock Data (Matches Screenshot exactly)
+// Initial Mock Data
 const INITIAL_DATA: DashboardState = {
   level: 7,
   currentXP: 2340,
@@ -41,27 +40,14 @@ const INITIAL_DATA: DashboardState = {
 };
 
 const App: React.FC = () => {
-  const [dashboardData, setDashboardData] = useState<DashboardState>(INITIAL_DATA);
-  const [isLoading, setIsLoading] = useState(false);
+  const [dashboardData] = useState<DashboardState>(INITIAL_DATA);
   const [email, setEmail] = useState('');
-  const [showDemoControls, setShowDemoControls] = useState(false);
-
-  const handleSimulation = async (scenario: ScenarioType) => {
-    setIsLoading(true);
-    try {
-      const newData = await generateDashboardSimulation(scenario);
-      setDashboardData(newData);
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setIsLoading(false);
-    }
-  };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden selection:bg-brand-pink selection:text-white">
-      {/* Navbar */}
-      <nav className="w-full py-6 px-6 md:px-12 flex justify-between items-center max-w-7xl mx-auto">
+    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden selection:bg-brand-pink selection:text-white flex flex-col">
+      
+      {/* Left-Aligned Navbar */}
+      <nav className="w-full py-8 px-6 flex items-center max-w-6xl mx-auto">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 bg-gradient-to-br from-brand-purple to-brand-pink rounded-lg flex items-center justify-center shadow-lg shadow-brand-purple/20">
             <Shield className="text-white" size={24} fill="currentColor" fillOpacity={0.2} />
@@ -71,25 +57,10 @@ const App: React.FC = () => {
             <span className="text-xs text-slate-400">by Sentiment AI</span>
           </div>
         </div>
-        
-        <div className="hidden md:flex items-center gap-4">
-             <button 
-                onClick={() => setShowDemoControls(!showDemoControls)}
-                className="text-sm text-slate-400 hover:text-white transition-colors"
-             >
-                {showDemoControls ? 'Hide Simulator' : 'Live Simulator'}
-             </button>
-             <div className="relative group">
-                 <div className="absolute -inset-0.5 bg-gradient-to-r from-brand-purple to-brand-pink rounded-full blur opacity-50 group-hover:opacity-75 transition duration-200"></div>
-                 <button className="relative px-6 py-2 bg-slate-900 rounded-full text-sm font-medium hover:bg-slate-800 transition-colors">
-                    Login
-                 </button>
-             </div>
-        </div>
       </nav>
 
       {/* Main Hero Section */}
-      <main className="max-w-7xl mx-auto px-6 md:px-12 pt-12 pb-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <main className="flex-grow w-full max-w-6xl mx-auto px-6 md:px-8 pt-8 pb-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Content */}
         <div className="flex flex-col gap-8 z-10">
@@ -130,44 +101,10 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-          
-          {/* Simulator Controls (Hidden by default, toggle via Nav) */}
-          {showDemoControls && (
-              <div className="mt-8 p-6 border border-slate-800 bg-slate-900/50 rounded-xl backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4">
-                  <div className="flex items-center gap-2 mb-4 text-brand-pink font-bold">
-                      <PlayCircle size={20} />
-                      <span>AI Simulator Control</span>
-                  </div>
-                  <p className="text-sm text-slate-400 mb-4">Generate real-time dashboard scenarios using Gemini 2.5 Flash.</p>
-                  <div className="flex flex-wrap gap-3">
-                      <button 
-                          onClick={() => handleSimulation(ScenarioType.NORMAL)}
-                          disabled={isLoading}
-                          className="px-4 py-2 bg-slate-800 hover:bg-slate-700 rounded-lg text-sm transition-colors disabled:opacity-50"
-                      >
-                          Normal Day
-                      </button>
-                      <button 
-                          onClick={() => handleSimulation(ScenarioType.CRISIS)}
-                          disabled={isLoading}
-                          className="px-4 py-2 bg-red-950/50 border border-red-900/50 hover:bg-red-900/50 text-red-400 rounded-lg text-sm transition-colors disabled:opacity-50"
-                      >
-                          Trigger Crisis
-                      </button>
-                      <button 
-                          onClick={() => handleSimulation(ScenarioType.VIRAL_SUCCESS)}
-                          disabled={isLoading}
-                          className="px-4 py-2 bg-emerald-950/50 border border-emerald-900/50 hover:bg-emerald-900/50 text-emerald-400 rounded-lg text-sm transition-colors disabled:opacity-50"
-                      >
-                          Viral Success
-                      </button>
-                  </div>
-              </div>
-          )}
         </div>
 
         {/* Right Content (Dashboard Preview) */}
-        <div className="relative lg:h-[600px] w-full flex items-center justify-center perspective-[2000px] group">
+        <div className="relative w-full flex items-center justify-center perspective-[2000px] group">
           {/* Glow Effects behind dashboard */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-purple/20 blur-[100px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
           
@@ -185,7 +122,7 @@ const App: React.FC = () => {
                   </div>
               </div>
 
-              <Dashboard data={dashboardData} loading={isLoading} />
+              <Dashboard data={dashboardData} loading={false} />
               
               {/* Reflection overlay */}
               <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-xl pointer-events-none"></div>
