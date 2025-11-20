@@ -14,15 +14,23 @@ export interface PlatformStat {
   data: number[]; // For sparkline
 }
 
+export interface SentimentPoint {
+  time: string;
+  score: number;
+}
+
 export interface DashboardState {
   level: number;
   currentXP: number;
   maxXP: number;
   vibeScore: number;
   streak: number;
+  totalMentions: number;
+  reach: string;
   alerts: Alert[];
   achievements: { name: string; xp: number; icon: string }[];
   platforms: PlatformStat[];
+  sentimentHistory: SentimentPoint[];
 }
 
 export enum ScenarioType {

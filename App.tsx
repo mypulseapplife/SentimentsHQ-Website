@@ -12,6 +12,8 @@ const INITIAL_DATA: DashboardState = {
   maxXP: 3000,
   vibeScore: 72,
   streak: 3,
+  totalMentions: 1420,
+  reach: "2.4M",
   alerts: [
     { id: '1', type: 'CRITICAL', message: 'Viral TikTok detected: 50K views in 30 minutes', time: '2 min ago', impact: '-12% sentiment', xp: 25 },
     { id: '2', type: 'WARNING', message: 'Reddit thread gaining traction: -12% sentiment', time: '15 min ago', impact: 'Monitoring' },
@@ -26,6 +28,15 @@ const INITIAL_DATA: DashboardState = {
     { name: 'Reddit', percentage: 22, trend: 'down', data: [60, 55, 40, 30, 22] },
     { name: 'Google', percentage: 18, trend: 'up', data: [15, 16, 16, 17, 18] },
     { name: 'Twitter', percentage: 15, trend: 'down', data: [30, 25, 20, 18, 15] }
+  ],
+  sentimentHistory: [
+    { time: "10:00", score: 68 },
+    { time: "11:00", score: 70 },
+    { time: "12:00", score: 75 },
+    { time: "13:00", score: 72 },
+    { time: "14:00", score: 65 },
+    { time: "15:00", score: 60 },
+    { time: "16:00", score: 72 }
   ]
 };
 
@@ -161,7 +172,7 @@ const App: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-purple/20 blur-[100px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
           
           {/* 3D Tilt Effect Container */}
-          <div className="relative w-full max-w-2xl transform transition-all duration-500 hover:rotate-y-[-2deg] hover:rotate-x-[2deg]">
+          <div className="relative w-full max-w-3xl transform transition-all duration-500 hover:rotate-y-[-2deg] hover:rotate-x-[2deg]">
               
               {/* Floating Badge */}
               <div className="absolute -top-6 -right-6 z-20">
