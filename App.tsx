@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Shield, ChevronRight, Mail, PlayCircle, RefreshCw } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
+import { TikTokSection } from './components/TikTokSection';
 import { generateDashboardSimulation } from './services/geminiService';
 import { DashboardState, ScenarioType } from './types';
 
@@ -181,6 +182,9 @@ const App: React.FC = () => {
         </div>
 
       </main>
+
+      {/* TikTok Section */}
+      <TikTokSection />
       
       {/* Floating Footer element just for style */}
       <div className="fixed bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent opacity-50"></div>
