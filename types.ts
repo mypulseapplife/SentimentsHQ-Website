@@ -4,6 +4,7 @@ export interface Alert {
   message: string;
   time: string;
   impact: string;
+  source?: string;
   xp?: number;
 }
 

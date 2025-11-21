@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Shield, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { TikTokSection } from './components/TikTokSection';
@@ -14,9 +14,9 @@ const INITIAL_DATA: DashboardState = {
   totalMentions: 1420,
   reach: "2.4M",
   alerts: [
-    { id: '1', type: 'CRITICAL', message: 'Viral TikTok detected: 50K views in 30 minutes', time: '2 min ago', impact: '-12% sentiment', xp: 25 },
-    { id: '2', type: 'WARNING', message: 'Reddit thread gaining traction: -12% sentiment', time: '15 min ago', impact: 'Monitoring' },
-    { id: '3', type: 'SUCCESS', message: 'Positive coverage detected across 5 platforms', time: '1 hour ago', impact: '+5% sentiment' },
+    { id: '1', type: 'CRITICAL', message: 'Viral TikTok detected: 50K views in 30 minutes', time: '2 min ago', impact: '-12% sentiment', source: '@tiktok_trend_watch', xp: 25 },
+    { id: '2', type: 'WARNING', message: 'Reddit thread gaining traction: "Unethical practices..."', time: '15 min ago', impact: 'Monitoring', source: 'r/ConsumerAdvice' },
+    { id: '3', type: 'SUCCESS', message: 'Positive coverage detected across 5 platforms', time: '1 hour ago', impact: '+5% sentiment', source: 'Global News Feed' },
   ],
   achievements: [
     { name: 'Crisis Defender', xp: 150, icon: 'shield' },
@@ -39,9 +39,25 @@ const INITIAL_DATA: DashboardState = {
   ]
 };
 
+const ROTATING_WORDS = ["threats", "news", "TikTok", "tweets", "threads", "content"];
+
 const App: React.FC = () => {
   const [dashboardData] = useState<DashboardState>(INITIAL_DATA);
   const [email, setEmail] = useState('');
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const [isAnimatingWord, setIsAnimatingWord] = useState(false);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimatingWord(true);
+      setTimeout(() => {
+        setCurrentWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+        setIsAnimatingWord(false);
+      }, 500); // Wait for exit animation
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#02040a] text-white overflow-x-hidden selection:bg-brand-purple/30 selection:text-white flex flex-col font-sans">
@@ -61,14 +77,29 @@ const App: React.FC = () => {
       </nav>
 
       {/* Main Hero Section */}
-      <main className="flex-grow w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-12 lg:pt-24 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
+      <main className="flex-grow w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-12 lg:pt-24 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         
         {/* Left Content - Typography Focus */}
         <div className="flex flex-col gap-10 z-10 max-w-2xl lg:max-w-3xl">
           <div className="space-y-6">
             <h2 className="text-6xl md:text-[5rem] leading-[0.95] font-semibold tracking-tighter opacity-0 animate-fade-in-up delay-100">
-              Protect your brand <br />
-              before it's <span className="text-red-500 inline-block">Too Late.</span>
+              Stop viral{' '}
+              <span className="relative inline-block min-w-[4ch]">
+                 <span 
+                    key={currentWordIndex}
+                    className={`text-red-500 inline-block transition-all duration-500 absolute left-0 top-0 ${
+                        isAnimatingWord 
+                        ? 'opacity-0 transform translate-y-4 blur-sm' 
+                        : 'opacity-100 transform translate-y-0 blur-0 animate-fade-in-up'
+                    }`}
+                 >
+                    {ROTATING_WORDS[currentWordIndex]}
+                 </span>
+                 {/* Invisible placeholder to maintain width */}
+                 <span className="opacity-0">{ROTATING_WORDS[currentWordIndex]}</span>
+              </span>
+              <br />
+              from destroying your brand overnight.
             </h2>
             
             <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed opacity-0 animate-fade-in-up delay-200 font-light tracking-wide">

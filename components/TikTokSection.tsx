@@ -76,10 +76,10 @@ export const TikTokSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 opacity-0 animate-fade-in-up duration-700">
             <div className="space-y-6 max-w-3xl">
                 <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tighter leading-[0.95]">
-                    Real life <span className="text-red-500">viral-risk</span> content detected.
+                    When <span className="text-red-500">viral-risk</span> content goes undetected.
                 </h2>
                 <p className="text-slate-400 text-xl font-light leading-relaxed max-w-2xl">
-                    The speed of cancellation is accelerating. See how these real brands lost control of their narrative in hours.
+                    The speed of reputation crisis is accelerating. See how these real brands lost control of their narrative in hours.
                 </p>
             </div>
             <div className="hidden md:flex items-center gap-3 px-5 py-3 bg-red-500/10 border border-red-500/20 rounded-full text-sm font-bold text-red-400 backdrop-blur-md shadow-[0_0_20px_rgba(239,68,68,0.1)]">
