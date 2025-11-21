@@ -57,51 +57,58 @@ export const TikTokSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-slate-950 relative overflow-hidden border-t border-slate-900">
+    <section className="py-32 relative overflow-hidden">
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent pointer-events-none"></div>
+
       <div className="max-w-6xl mx-auto px-6 md:px-8 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
-            <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight">
-                    Viral <span className="text-brand-red">Threats</span> Detected
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 opacity-0 animate-fade-in-up duration-700">
+            <div className="space-y-4 max-w-2xl">
+                <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
+                    Viral <span className="text-red-500">threats</span> detected.
                 </h2>
-                <p className="text-slate-400 max-w-2xl text-lg">
-                    See real-time examples of brand reputation crises unfolding on TikTok. 
+                <p className="text-slate-400 text-lg font-light leading-relaxed">
+                    Real-time examples of brand reputation crises unfolding on TikTok. 
                     These videos generated millions of views in hours, destroying trust overnight.
                 </p>
             </div>
-            <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-slate-900 border border-slate-800 rounded-full text-sm text-slate-400">
-                <TrendingUp size={16} className="text-brand-red" />
+            <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-xs font-medium text-slate-300 backdrop-blur-sm">
+                <TrendingUp size={14} className="text-red-500" />
                 <span>Trending Negative Sentiment</span>
             </div>
         </div>
 
         {/* Carousel */}
-        <div className="flex overflow-x-auto gap-6 pb-10 pt-2 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-hide">
-            {TIKTOK_DATA.map((item) => (
-                <div key={item.id} className="snap-center shrink-0 w-[340px] bg-slate-900/80 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col hover:border-slate-700 transition-all duration-300 group">
+        <div className="flex overflow-x-auto gap-6 pb-12 pt-4 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-hide">
+            {TIKTOK_DATA.map((item, index) => (
+                <div 
+                  key={item.id} 
+                  className="snap-center shrink-0 w-[340px] bg-[#0a0f1e] border border-white/5 rounded-3xl overflow-hidden shadow-2xl flex flex-col transition-all duration-500 hover:border-white/10 hover:-translate-y-1 group opacity-0 animate-fade-in-up"
+                  style={{ animationDelay: `${100 + (index * 100)}ms`, animationFillMode: 'forwards' }}
+                >
                     {/* Header */}
-                    <div className="p-5 bg-slate-900 border-b border-slate-800">
-                        <div className="flex justify-between items-start mb-3">
-                            <h3 className="text-lg font-bold text-white truncate max-w-[200px]" title={item.company}>
+                    <div className="p-6 border-b border-white/5 bg-white/[0.02]">
+                        <div className="flex justify-between items-start mb-4">
+                            <h3 className="text-base font-semibold text-white truncate max-w-[180px]" title={item.company}>
                                 {item.company}
                             </h3>
-                            <span className="px-2 py-1 rounded text-[10px] font-bold bg-red-500/10 text-brand-red border border-red-500/20 uppercase tracking-wider">
+                            <span className="px-2 py-1 rounded-md text-[10px] font-bold bg-red-500/10 text-red-500 tracking-wide">
                                 {item.impact}
                             </span>
                         </div>
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="flex flex-col">
-                                <span className="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Views</span>
-                                <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
-                                    <Eye size={14} />
+                        <div className="grid grid-cols-2 gap-6">
+                            <div className="flex flex-col gap-1">
+                                <span className="text-[10px] uppercase text-slate-500 font-bold tracking-wider">Views</span>
+                                <div className="flex items-center gap-1.5 text-white font-medium">
+                                    <Eye size={14} className="text-slate-400" />
                                     {item.views}
                                 </div>
                             </div>
-                            <div className="flex flex-col">
-                                <span className="text-[10px] uppercase text-slate-500 font-semibold tracking-wider">Comments</span>
-                                <div className="flex items-center gap-1.5 text-blue-400 font-bold">
-                                    <MessageCircle size={14} />
+                            <div className="flex flex-col gap-1">
+                                <span className="text-[10px] uppercase text-slate-500 font-bold tracking-wider">Comments</span>
+                                <div className="flex items-center gap-1.5 text-white font-medium">
+                                    <MessageCircle size={14} className="text-slate-400" />
                                     {item.comments}
                                 </div>
                             </div>
@@ -117,8 +124,8 @@ export const TikTokSection: React.FC = () => {
                             style={{maxWidth: '605px', minWidth: '325px', margin: 0}} 
                         > 
                             <section> 
-                                <a target="_blank" href={item.url} className="text-slate-500 hover:text-white transition-colors flex items-center gap-2">
-                                   Loading TikTok...
+                                <a target="_blank" href={item.url} className="text-slate-500 hover:text-white transition-colors flex items-center gap-2 text-sm">
+                                   Loading Video...
                                 </a> 
                             </section> 
                         </blockquote>

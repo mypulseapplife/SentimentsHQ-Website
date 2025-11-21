@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Shield, ChevronRight, Mail } from 'lucide-react';
+import { Shield, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { TikTokSection } from './components/TikTokSection';
 import { DashboardState } from './types';
 
 // Initial Mock Data
 const INITIAL_DATA: DashboardState = {
-  level: 7,
+  level: 7, // Hidden in UI
   currentXP: 2340,
   maxXP: 3000,
   vibeScore: 72,
@@ -44,88 +44,91 @@ const App: React.FC = () => {
   const [email, setEmail] = useState('');
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white overflow-x-hidden selection:bg-brand-pink selection:text-white flex flex-col">
+    <div className="min-h-screen bg-[#02040a] text-white overflow-x-hidden selection:bg-brand-purple/30 selection:text-white flex flex-col font-sans">
       
-      {/* Left-Aligned Navbar */}
-      <nav className="w-full py-8 px-6 flex items-center max-w-6xl mx-auto">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-brand-purple to-brand-pink rounded-lg flex items-center justify-center shadow-lg shadow-brand-purple/20">
-            <Shield className="text-white" size={24} fill="currentColor" fillOpacity={0.2} />
+      {/* Navbar - Minimal & Premium */}
+      <nav className="w-full py-8 px-6 flex items-center justify-between max-w-6xl mx-auto opacity-0 animate-fade-in duration-1000">
+        <div className="flex items-center gap-3 cursor-pointer group">
+          <div className="relative w-8 h-8 flex items-center justify-center">
+             <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-md group-hover:bg-brand-purple/40 transition-all duration-500"></div>
+             <Shield className="relative text-white transition-transform duration-500 group-hover:scale-110" size={20} fill="currentColor" fillOpacity={0.1} strokeWidth={2} />
           </div>
           <div className="flex flex-col">
-            <h1 className="text-xl font-bold tracking-tight leading-none">VibeScore</h1>
-            <span className="text-xs text-slate-400">by Sentiment AI</span>
+            <span className="text-sm font-bold tracking-wide">VibeScore</span>
           </div>
         </div>
       </nav>
 
       {/* Main Hero Section */}
-      <main className="flex-grow w-full max-w-6xl mx-auto px-6 md:px-8 pt-8 pb-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <main className="flex-grow w-full max-w-6xl mx-auto px-6 md:px-8 pt-12 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         
-        {/* Left Content */}
-        <div className="flex flex-col gap-8 z-10">
-          <h2 className="text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
-            Protect Your Brand <br />
-            Before It's <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-brand-pink to-brand-purple">Too Late</span>
-          </h2>
-          
-          <p className="text-lg md:text-xl text-slate-400 max-w-lg leading-relaxed">
-            Real-time reputation monitoring from across the entire web. 
-            Detect threats, catch sentiment shifts and take control of your brand narrative.
-          </p>
-
-          {/* Form Area */}
-          <div className="flex flex-col sm:flex-row gap-4 max-w-xl mt-2">
-            <div className="relative flex-grow group">
-              <div className="absolute inset-0 bg-gradient-to-r from-slate-800 to-slate-900 rounded-lg blur-sm group-hover:blur transition-all duration-300 opacity-50"></div>
-              <input 
-                type="email" 
-                placeholder="Enter your email address"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="relative w-full bg-slate-950/80 border border-slate-800 rounded-lg px-6 py-4 text-white placeholder:text-slate-600 focus:outline-none focus:border-brand-purple focus:ring-1 focus:ring-brand-purple transition-all"
-              />
-              <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-600" size={20} />
-            </div>
-            <button className="relative overflow-hidden group bg-brand-purple hover:bg-brand-pink transition-all duration-300 text-white font-semibold rounded-lg px-8 py-4 flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(168,85,247,0.4)] hover:shadow-[0_0_30px_rgba(217,70,239,0.6)]">
-              <span>Join Waitlist</span>
-              <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+        {/* Left Content - Typography Focus */}
+        <div className="flex flex-col gap-10 z-10 max-w-xl">
+          <div className="space-y-6">
+            <h2 className="text-6xl md:text-[5rem] leading-[0.95] font-semibold tracking-tighter opacity-0 animate-fade-in-up delay-100">
+              Protect your brand <br />
+              before it's <span className="text-red-500 inline-block">Too Late.</span>
+            </h2>
+            
+            <p className="text-lg md:text-xl text-slate-400 max-w-md leading-relaxed opacity-0 animate-fade-in-up delay-200 font-light tracking-wide">
+              Real-time reputation intelligence. Detect threats, track sentiment, and control the narrative instantly.
+            </p>
           </div>
 
-          <div className="flex flex-wrap gap-6 mt-4 text-sm text-slate-400">
-            {['Real-time monitoring', 'Instant alerts', 'Free 14-day trial'].map((item, i) => (
-              <div key={i} className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-brand-purple"></div>
-                {item}
-              </div>
-            ))}
+          {/* Premium Form Input */}
+          <div className="flex flex-col gap-6 opacity-0 animate-fade-in-up delay-300">
+            <div className="flex flex-col sm:flex-row gap-3">
+                <div className="relative flex-grow group">
+                  <input 
+                    type="email" 
+                    placeholder="work@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-purple/50 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm text-sm"
+                  />
+                </div>
+                <button className="group relative overflow-hidden bg-white text-black font-medium rounded-full px-8 py-4 flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                  <span className="relative z-10 text-sm tracking-wide">Join Waitlist</span>
+                  <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-slate-200 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </button>
+            </div>
+
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap gap-x-8 gap-y-2 text-xs text-slate-500 font-medium tracking-wide opacity-0 animate-fade-in-up delay-500">
+               <span className="flex items-center gap-2 hover:text-slate-300 transition-colors">
+                 <div className="w-1 h-1 bg-brand-purple rounded-full"></div> Real-time monitoring
+               </span>
+               <span className="flex items-center gap-2 hover:text-slate-300 transition-colors">
+                 <div className="w-1 h-1 bg-brand-purple rounded-full"></div> Instant alerts
+               </span>
+               <span className="flex items-center gap-2 hover:text-slate-300 transition-colors">
+                 <div className="w-1 h-1 bg-brand-purple rounded-full"></div> Free 14-day trial
+               </span>
+            </div>
           </div>
         </div>
 
         {/* Right Content (Dashboard Preview) */}
-        <div className="relative w-full flex items-center justify-center perspective-[2000px] group">
-          {/* Glow Effects behind dashboard */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-purple/20 blur-[100px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+        <div className="relative w-full flex items-center justify-center perspective-[2000px] group opacity-0 animate-fade-in-up delay-300">
+          {/* Subtle Atmosphere */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-purple/10 blur-[120px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000"></div>
           
-          {/* 3D Tilt Effect Container */}
-          <div className="relative w-full max-w-3xl transform transition-all duration-500 hover:rotate-y-[-2deg] hover:rotate-x-[2deg]">
+          {/* 3D Container */}
+          <div className="relative w-full max-w-3xl transform transition-transform duration-700 hover:scale-[1.01] hover:rotate-y-[-1deg]">
               
-              {/* Floating Badge */}
-              <div className="absolute -top-6 -right-6 z-20">
-                  <div className="relative">
-                      <div className="absolute inset-0 bg-red-500 blur-lg opacity-50 animate-pulse"></div>
-                      <div className="relative bg-gradient-to-br from-orange-500 to-red-600 text-white text-xs font-bold px-4 py-2 rounded-full shadow-xl border border-red-400/50 flex items-center gap-2">
-                         <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
-                         +150 XP LIVE
-                      </div>
+              {/* Minimal Floating Badge */}
+              <div className="absolute -top-4 -right-4 z-20">
+                  <div className="flex items-center gap-2 bg-[#0f172a] border border-red-500/30 text-red-500 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-2xl">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                      </span>
+                      LIVE
                   </div>
               </div>
 
               <Dashboard data={dashboardData} loading={false} />
-              
-              {/* Reflection overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent rounded-xl pointer-events-none"></div>
           </div>
         </div>
 
@@ -134,8 +137,8 @@ const App: React.FC = () => {
       {/* TikTok Section */}
       <TikTokSection />
       
-      {/* Floating Footer element just for style */}
-      <div className="fixed bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent opacity-50"></div>
+      {/* Footer Line */}
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"></div>
     </div>
   );
 };
