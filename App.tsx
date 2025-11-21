@@ -47,7 +47,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-[#02040a] text-white overflow-x-hidden selection:bg-brand-purple/30 selection:text-white flex flex-col font-sans">
       
       {/* Navbar - Minimal & Premium */}
-      <nav className="w-full py-8 px-6 flex items-center justify-between max-w-6xl mx-auto opacity-0 animate-fade-in duration-1000">
+      <nav className="w-full py-8 px-6 md:px-12 flex items-center justify-between max-w-[1400px] mx-auto opacity-0 animate-fade-in duration-1000">
         <div className="flex items-center gap-4 cursor-pointer group">
           <div className="relative w-10 h-10 flex items-center justify-center">
              <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-md group-hover:bg-brand-purple/40 transition-all duration-500"></div>
@@ -61,23 +61,23 @@ const App: React.FC = () => {
       </nav>
 
       {/* Main Hero Section */}
-      <main className="flex-grow w-full max-w-6xl mx-auto px-6 md:px-8 pt-12 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <main className="flex-grow w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-12 lg:pt-24 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
         
         {/* Left Content - Typography Focus */}
-        <div className="flex flex-col gap-10 z-10 max-w-xl">
+        <div className="flex flex-col gap-10 z-10 max-w-2xl lg:max-w-3xl">
           <div className="space-y-6">
             <h2 className="text-6xl md:text-[5rem] leading-[0.95] font-semibold tracking-tighter opacity-0 animate-fade-in-up delay-100">
               Protect your brand <br />
               before it's <span className="text-red-500 inline-block">Too Late.</span>
             </h2>
             
-            <p className="text-lg md:text-xl text-slate-400 max-w-md leading-relaxed opacity-0 animate-fade-in-up delay-200 font-light tracking-wide">
+            <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed opacity-0 animate-fade-in-up delay-200 font-light tracking-wide">
               Real-time reputation intelligence. Detect threats, track sentiment, and control the narrative instantly.
             </p>
           </div>
 
           {/* Premium Form Input */}
-          <div className="flex flex-col gap-6 opacity-0 animate-fade-in-up delay-300">
+          <div className="flex flex-col gap-6 opacity-0 animate-fade-in-up delay-300 max-w-lg">
             <div className="flex flex-col sm:flex-row gap-3">
                 <div className="relative flex-grow group">
                   <input 
@@ -88,7 +88,7 @@ const App: React.FC = () => {
                     className="w-full bg-white/5 border border-white/10 rounded-full px-6 py-4 text-white placeholder:text-slate-500 focus:outline-none focus:border-brand-purple/50 focus:bg-white/10 transition-all duration-300 backdrop-blur-sm text-sm"
                   />
                 </div>
-                <button className="group relative overflow-hidden bg-white text-black font-medium rounded-full px-8 py-4 flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98]">
+                <button className="group relative overflow-hidden bg-white text-black font-medium rounded-full px-8 py-4 flex items-center justify-center gap-2 transition-transform duration-300 hover:scale-[1.02] active:scale-[0.98] shrink-0">
                   <span className="relative z-10 text-sm tracking-wide">Join Waitlist</span>
                   <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-r from-slate-200 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -116,7 +116,7 @@ const App: React.FC = () => {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-purple/10 blur-[120px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000"></div>
           
           {/* iPad Frame Container */}
-          <div className="relative w-full max-w-[800px] mx-auto opacity-0 animate-tilt-in delay-300">
+          <div className="relative w-full max-w-[850px] mx-auto opacity-0 animate-tilt-in delay-300">
             
             {/* Device Frame */}
             <div className="relative rounded-[2.5rem] bg-[#121212] p-2.5 shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/5 transition-transform duration-700 hover:scale-[1.01]">

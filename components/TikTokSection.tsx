@@ -67,13 +67,13 @@ export const TikTokSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-32 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent pointer-events-none"></div>
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-12 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 opacity-0 animate-fade-in-up duration-700">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 opacity-0 animate-fade-in-up duration-700">
             <div className="space-y-6 max-w-3xl">
                 <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tighter leading-[0.95]">
                     Real life <span className="text-red-500">viral-risk</span> content detected.
@@ -89,73 +89,72 @@ export const TikTokSection: React.FC = () => {
         </div>
 
         {/* Carousel */}
-        <div className="flex overflow-x-auto gap-8 pb-16 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-hide">
+        <div className="flex overflow-x-auto gap-6 pb-16 -mx-6 px-6 md:mx-0 md:px-0 snap-x snap-mandatory scrollbar-hide lg:justify-center">
             {TIKTOK_DATA.map((item, index) => (
                 <div 
                   key={item.id} 
-                  className="snap-center shrink-0 w-[90vw] md:w-[450px] bg-[#0f1115] border border-white/5 rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col transition-all duration-500 hover:border-red-500/30 hover:shadow-[0_20px_60px_-20px_rgba(220,38,38,0.15)] group opacity-0 animate-fade-in-up"
+                  className="snap-center shrink-0 w-[85vw] md:w-[350px] bg-[#0f1115] border border-white/5 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col transition-all duration-500 hover:border-red-500/30 hover:shadow-[0_20px_60px_-20px_rgba(220,38,38,0.15)] group opacity-0 animate-fade-in-up"
                   style={{ animationDelay: `${100 + (index * 100)}ms`, animationFillMode: 'forwards' }}
                 >
                     {/* Crisis Header Block */}
-                    <div className="p-8 bg-gradient-to-b from-white/[0.03] to-transparent border-b border-white/5">
+                    <div className="p-6 bg-gradient-to-b from-white/[0.03] to-transparent border-b border-white/5">
                         
                         {/* Company Identity */}
-                        <div className="flex flex-col gap-2 mb-8">
+                        <div className="flex flex-col gap-2 mb-6">
                             <div className="flex justify-between items-start">
                                 <div>
-                                    <h3 className="text-3xl font-bold text-white tracking-tight mb-1">
+                                    <h3 className="text-2xl font-bold text-white tracking-tight mb-1">
                                         {item.company}
                                     </h3>
-                                    <div className="flex items-center gap-2 text-slate-400 text-sm font-medium">
-                                        <MapPin size={14} className="text-slate-500" />
+                                    <div className="flex items-center gap-2 text-slate-400 text-xs font-medium">
+                                        <MapPin size={12} className="text-slate-500" />
                                         {item.location}
                                     </div>
                                 </div>
-                                <div className="px-3 py-1 rounded-full bg-red-600 text-white text-[10px] font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(220,38,38,0.6)] animate-pulse">
+                                <div className="px-2.5 py-1 rounded-full bg-red-600 text-white text-[9px] font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(220,38,38,0.6)] animate-pulse">
                                     Verified Crisis
                                 </div>
                             </div>
                         </div>
 
-                        {/* Impact Metrics - BIG NUMBERS */}
-                        <div className="grid grid-cols-2 gap-4 mb-8">
-                            <div className="relative p-4 bg-white/[0.02] rounded-2xl border border-white/5 group-hover:border-white/10 transition-colors">
-                                <div className="flex items-center gap-2 text-[11px] uppercase text-slate-500 font-bold tracking-widest mb-1">
-                                    <Eye size={14} /> Views
+                        {/* Impact Metrics */}
+                        <div className="grid grid-cols-2 gap-3 mb-6">
+                            <div className="relative p-3 bg-white/[0.02] rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
+                                <div className="flex items-center gap-2 text-[10px] uppercase text-slate-500 font-bold tracking-widest mb-1">
+                                    <Eye size={12} /> Views
                                 </div>
-                                <div className="text-4xl font-bold text-white tracking-tighter">
+                                <div className="text-2xl font-bold text-white tracking-tighter">
                                     {item.views}
                                 </div>
                             </div>
-                            <div className="relative p-4 bg-white/[0.02] rounded-2xl border border-white/5 group-hover:border-white/10 transition-colors">
-                                <div className="flex items-center gap-2 text-[11px] uppercase text-slate-500 font-bold tracking-widest mb-1">
-                                    <MessageCircle size={14} /> Comments
+                            <div className="relative p-3 bg-white/[0.02] rounded-xl border border-white/5 group-hover:border-white/10 transition-colors">
+                                <div className="flex items-center gap-2 text-[10px] uppercase text-slate-500 font-bold tracking-widest mb-1">
+                                    <MessageCircle size={12} /> Comments
                                 </div>
-                                <div className="text-4xl font-bold text-white tracking-tighter">
+                                <div className="text-2xl font-bold text-white tracking-tighter">
                                     {item.comments}
                                 </div>
                             </div>
                         </div>
 
                         {/* Impact Summary */}
-                        <div className="relative bg-red-500/[0.03] border border-red-500/20 rounded-2xl p-5 overflow-hidden group-hover:bg-red-500/[0.05] transition-all duration-500">
-                             <div className="absolute top-0 left-0 w-1 h-full bg-red-500/50 rounded-l-2xl"></div>
-                             {/* Scanning light effect */}
+                        <div className="relative bg-red-500/[0.03] border border-red-500/20 rounded-xl p-4 overflow-hidden group-hover:bg-red-500/[0.05] transition-all duration-500">
+                             <div className="absolute top-0 left-0 w-1 h-full bg-red-500/50 rounded-l-xl"></div>
                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/5 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]"></div>
                              
-                             <div className="mb-2 flex items-center gap-2 text-red-400 font-bold text-xs uppercase tracking-wider relative z-10">
-                                <AlertOctagon size={14} />
+                             <div className="mb-1.5 flex items-center gap-2 text-red-400 font-bold text-[10px] uppercase tracking-wider relative z-10">
+                                <AlertOctagon size={12} />
                                 <span>Consequence: {item.impact}</span>
                              </div>
-                             <p className="text-sm text-slate-300 leading-relaxed font-medium relative z-10">
+                             <p className="text-xs text-slate-300 leading-relaxed font-medium relative z-10">
                                 "{item.summary}"
                              </p>
                         </div>
                     </div>
                     
                     {/* Video Container */}
-                    <div className="relative bg-black flex-1 min-h-[700px] flex items-center justify-center border-t border-white/5">
-                        <div className="w-full h-full scale-[1.15] origin-top"> {/* Slight scale to fill styling gaps */}
+                    <div className="relative bg-black flex-1 min-h-[580px] flex items-center justify-center border-t border-white/5">
+                        <div className="w-full h-full scale-[1.0] origin-top"> 
                              <blockquote 
                                 className="tiktok-embed" 
                                 cite={item.url}
@@ -170,7 +169,6 @@ export const TikTokSection: React.FC = () => {
                             </blockquote>
                         </div>
                         
-                        {/* Gradient Overlay at bottom of video for seamless integration if needed */}
                         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#0f1115] to-transparent pointer-events-none"></div>
                     </div>
                 </div>
