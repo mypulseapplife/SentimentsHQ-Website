@@ -51,6 +51,16 @@ const TIKTOK_DATA = [
     comments: '48.9k',
     impact: 'STAFF TERMINATION',
     summary: 'Aggressive staff behavior caught on camera resulted in immediate terminations and targeted hate campaigns.'
+  },
+  {
+    id: '7556755811742092575',
+    url: 'https://www.tiktok.com/@adventure.sleep.repeat/video/7556755811742092575',
+    company: 'Mazda USA',
+    location: 'Vancouver, Washington',
+    views: '8.5M',
+    comments: '14.2k',
+    impact: 'WARRANTY DENIAL',
+    summary: 'Spontaneous sunroof explosion denied by warranty sparked viral outrage regarding vehicle build quality and safety.'
   }
 ];
 
@@ -71,10 +81,10 @@ export const TikTokSection: React.FC = () => {
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-transparent pointer-events-none"></div>
 
-      {/* Wider container to fit 5 columns side-by-side */}
-      <div className="max-w-[1800px] mx-auto px-4 md:px-8 relative z-10">
+      {/* Container adjusted for 3-column layout balance */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 relative z-10">
         
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8 opacity-0 animate-fade-in-up duration-700 max-w-[1400px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8 opacity-0 animate-fade-in-up duration-700 max-w-[1200px] mx-auto">
             <div className="space-y-6 max-w-3xl">
                 <h2 className="text-5xl md:text-6xl font-bold text-white tracking-tighter leading-[0.95]">
                     When <span className="text-red-500">viral-risk</span> content goes undetected.
@@ -89,8 +99,8 @@ export const TikTokSection: React.FC = () => {
             </div>
         </div>
 
-        {/* Grid Layout: 5 Columns on XL screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 lg:gap-6 pb-12">
+        {/* Grid Layout: 3 Columns on Large screens (3x2 grid) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 pb-12">
             {TIKTOK_DATA.map((item, index) => (
                 <div 
                   key={item.id} 
