@@ -48,13 +48,14 @@ const App: React.FC = () => {
       
       {/* Navbar - Minimal & Premium */}
       <nav className="w-full py-8 px-6 flex items-center justify-between max-w-6xl mx-auto opacity-0 animate-fade-in duration-1000">
-        <div className="flex items-center gap-3 cursor-pointer group">
-          <div className="relative w-8 h-8 flex items-center justify-center">
+        <div className="flex items-center gap-4 cursor-pointer group">
+          <div className="relative w-10 h-10 flex items-center justify-center">
              <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-md group-hover:bg-brand-purple/40 transition-all duration-500"></div>
-             <Shield className="relative text-white transition-transform duration-500 group-hover:scale-110" size={20} fill="currentColor" fillOpacity={0.1} strokeWidth={2} />
+             <Shield className="relative text-white transition-transform duration-500 group-hover:scale-110" size={26} fill="currentColor" fillOpacity={0.1} strokeWidth={2} />
           </div>
-          <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-wide">VibeScore</span>
+          <div className="flex flex-col -space-y-0.5">
+            <span className="text-xl font-bold tracking-wide">VibeScore</span>
+            <span className="text-[10px] text-slate-400 font-medium tracking-wider uppercase">by Sentiment AI</span>
           </div>
         </div>
       </nav>
@@ -114,21 +115,36 @@ const App: React.FC = () => {
           {/* Subtle Atmosphere */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] bg-brand-purple/10 blur-[120px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000"></div>
           
-          {/* 3D Container */}
-          <div className="relative w-full max-w-3xl transform transition-transform duration-700 hover:scale-[1.01] hover:rotate-y-[-1deg]">
-              
-              {/* Minimal Floating Badge */}
-              <div className="absolute -top-4 -right-4 z-20">
-                  <div className="flex items-center gap-2 bg-[#0f172a] border border-red-500/30 text-red-500 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-2xl">
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                      </span>
-                      LIVE
-                  </div>
-              </div>
+          {/* iPad Frame Container */}
+          <div className="relative w-full max-w-[800px] mx-auto opacity-0 animate-tilt-in delay-300">
+            
+            {/* Device Frame */}
+            <div className="relative rounded-[2.5rem] bg-[#121212] p-2.5 shadow-[0_0_0_1px_rgba(255,255,255,0.1),0_25px_60px_-15px_rgba(0,0,0,0.6)] ring-1 ring-white/5 transition-transform duration-700 hover:scale-[1.01]">
+                 
+                 {/* Camera Notch (Optional, kept subtle) */}
+                 <div className="absolute top-0 left-1/2 -translate-x-1/2 h-1.5 w-24 bg-black/40 rounded-b-xl z-30 backdrop-blur-md border-b border-x border-white/5 hidden sm:block"></div>
 
-              <Dashboard data={dashboardData} loading={false} />
+                 {/* Inner Bezel/Screen Container */}
+                 <div className="rounded-[2rem] overflow-hidden bg-[#0B0F17] border border-white/5 relative isolate">
+                    {/* Dashboard Component */}
+                    <Dashboard data={dashboardData} loading={false} />
+                    
+                    {/* Glass Reflection Overlay */}
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-30 z-20 rounded-[2rem]"></div>
+                 </div>
+            </div>
+
+            {/* Floating Badge */}
+            <div className="absolute -top-5 -right-5 z-40 animate-bounce-slow">
+                <div className="flex items-center gap-2 bg-[#0f172a] border border-red-500/30 text-red-500 text-[10px] font-bold px-3 py-1.5 rounded-full shadow-xl backdrop-blur-md">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                    </span>
+                    LIVE
+                </div>
+            </div>
+
           </div>
         </div>
 

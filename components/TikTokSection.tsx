@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { MessageCircle, Eye, TrendingUp } from 'lucide-react';
+import { MessageCircle, Eye, TrendingUp, AlertTriangle } from 'lucide-react';
 
 const TIKTOK_DATA = [
   {
@@ -8,23 +8,26 @@ const TIKTOK_DATA = [
     company: 'Kis Cafe',
     views: '30.2M',
     comments: '36.5k',
-    impact: 'Service Complaint'
+    impact: 'Service Complaint',
+    summary: 'This video led to the permanent shutdown of the business in just 7 days following mass community boycott.'
   },
   {
     id: '7565632133260234014',
     url: 'https://www.tiktok.com/@kimmyk561/video/7565632133260234014',
-    company: 'Texas Road House Steak',
+    company: 'Texas Road House',
     views: '18.4M',
     comments: '52.1k',
-    impact: 'Food Safety'
+    impact: 'Food Safety',
+    summary: 'Viral exposure of health violations forced an immediate corporate apology, audit, and public PR crisis.'
   },
   {
     id: '7569711258534939959',
     url: 'https://www.tiktok.com/@so_thats_toya/video/7569711258534939959',
-    company: 'The Joule SPA texas',
+    company: 'The Joule SPA',
     views: '6.7M',
     comments: '15.3k',
-    impact: 'Customer Service'
+    impact: 'Customer Service',
+    summary: 'Discriminatory service allegations sparked a massive review bombing campaign, dropping rating by 2.5 stars.'
   },
   {
     id: '7540010763990224183',
@@ -32,7 +35,8 @@ const TIKTOK_DATA = [
     company: 'Cigna Healthcare',
     views: '9.2M',
     comments: '31.8k',
-    impact: 'Policy Backlash'
+    impact: 'Policy Backlash',
+    summary: 'Patient denial story went viral, pressuring executives to reverse the decision and issue a public statement.'
   },
   {
     id: '7562367991032155413',
@@ -40,7 +44,8 @@ const TIKTOK_DATA = [
     company: 'Limoncello Miami',
     views: '22.1M',
     comments: '48.9k',
-    impact: 'Viral Altercation'
+    impact: 'Viral Altercation',
+    summary: 'Aggressive staff behavior caught on camera resulted in immediate terminations and targeted hate campaigns.'
   }
 ];
 
@@ -66,7 +71,7 @@ export const TikTokSection: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 opacity-0 animate-fade-in-up duration-700">
             <div className="space-y-4 max-w-2xl">
                 <h2 className="text-4xl md:text-5xl font-semibold text-white tracking-tight leading-tight">
-                    Viral <span className="text-red-500">threats</span> detected.
+                    Real life <span className="text-red-500">viral-risk content</span> detected.
                 </h2>
                 <p className="text-slate-400 text-lg font-light leading-relaxed">
                     Real-time examples of brand reputation crises unfolding on TikTok. 
@@ -97,7 +102,8 @@ export const TikTokSection: React.FC = () => {
                                 {item.impact}
                             </span>
                         </div>
-                        <div className="grid grid-cols-2 gap-6">
+                        
+                        <div className="grid grid-cols-2 gap-6 mb-4">
                             <div className="flex flex-col gap-1">
                                 <span className="text-[10px] uppercase text-slate-500 font-bold tracking-wider">Views</span>
                                 <div className="flex items-center gap-1.5 text-white font-medium">
@@ -112,6 +118,16 @@ export const TikTokSection: React.FC = () => {
                                     {item.comments}
                                 </div>
                             </div>
+                        </div>
+
+                        {/* Summary Statement */}
+                        <div className="relative bg-white/5 rounded-lg p-3 border border-white/5">
+                             <div className="flex items-start gap-2">
+                                <AlertTriangle size={12} className="text-red-500 shrink-0 mt-0.5" />
+                                <p className="text-[11px] text-slate-300 leading-relaxed font-medium">
+                                    {item.summary}
+                                </p>
+                             </div>
                         </div>
                     </div>
                     

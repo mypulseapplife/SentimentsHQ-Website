@@ -33,6 +33,7 @@
               'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
               'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
               'fade-in': 'fadeIn 1s ease-out forwards',
+              'tilt-in': 'tiltIn 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
             },
             keyframes: {
               fadeInUp: {
@@ -42,6 +43,16 @@
               fadeIn: {
                 '0%': { opacity: 0 },
                 '100%': { opacity: 1 },
+              },
+              tiltIn: {
+                '0%': { 
+                  opacity: 0, 
+                  transform: 'perspective(1000px) rotateX(10deg) translateY(40px) scale(0.95)' 
+                },
+                '100%': { 
+                  opacity: 1, 
+                  transform: 'perspective(1000px) rotateX(0) translateY(0) scale(1)' 
+                }
               }
             }
           },

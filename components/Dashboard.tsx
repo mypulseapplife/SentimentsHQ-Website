@@ -112,14 +112,14 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
 
   if (loading) {
     return (
-      <div className="w-full h-[540px] flex items-center justify-center bg-[#0B0F17] rounded-xl border border-white/10">
+      <div className="w-full h-[540px] flex items-center justify-center bg-[#0B0F17]">
         <div className="w-8 h-8 border-t-2 border-brand-purple rounded-full animate-spin"></div>
       </div>
     );
   }
 
   return (
-    <div className="relative w-full h-[540px] bg-[#0B0F17] rounded-2xl border border-white/10 shadow-2xl overflow-hidden flex flex-col text-white">
+    <div className="relative w-full h-[540px] bg-[#0B0F17] flex flex-col text-white">
       
       {/* Window Header */}
       <div className="h-10 bg-[#0B0F17] border-b border-white/5 flex items-center px-4 gap-2 shrink-0 z-20 justify-between">
