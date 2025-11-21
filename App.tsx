@@ -99,7 +99,7 @@ const App: React.FC = () => {
                  <span className="opacity-0">{ROTATING_WORDS[currentWordIndex]}</span>
               </span>
               <br />
-              from destroying your brand overnight.
+              before it destroys your brand.
             </h2>
             
             <p className="text-lg md:text-xl text-slate-400 max-w-xl leading-relaxed opacity-0 animate-fade-in-up delay-200 font-light tracking-wide">

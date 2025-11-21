@@ -120,10 +120,10 @@ const NavItem: React.FC<{ icon: React.ElementType; label: string; active?: boole
 
 export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
   const getScoreStatus = (score: number) => {
-    if (score >= 80) return { label: 'EXCELLENT', color: 'text-emerald-400', desc: 'Positive sentiment.' };
-    if (score >= 60) return { label: 'STABLE', color: 'text-blue-400', desc: 'Normal fluctuations.' };
-    if (score >= 40) return { label: 'WARNING', color: 'text-amber-400', desc: 'Negative trend detected.' };
-    return { label: 'CRITICAL', color: 'text-red-500', desc: 'Immediate action required.' };
+    if (score >= 80) return { label: 'EXCELLENT', color: 'text-emerald-400', desc: 'Sentiment is peaking. +14% vs last week.' };
+    if (score >= 60) return { label: 'STABLE', color: 'text-blue-400', desc: 'Recovering well. +5% this week.' };
+    if (score >= 40) return { label: 'WARNING', color: 'text-amber-400', desc: 'Negative trend detected. -8% engagement drop.' };
+    return { label: 'CRITICAL', color: 'text-red-500', desc: 'Immediate action required. Viral negative sentiment.' };
   };
 
   const status = getScoreStatus(data.vibeScore);
@@ -169,7 +169,7 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
                 
                 <div className="text-center mt-2 z-10">
                     <div className={`text-xl font-bold ${status.color} tracking-tight`}>{status.label}</div>
-                    <div className="text-[10px] text-slate-400 font-medium mt-1 max-w-[140px] mx-auto leading-tight opacity-80">
+                    <div className="text-[10px] text-slate-400 font-medium mt-1 max-w-[160px] mx-auto leading-tight opacity-80">
                         {status.desc}
                     </div>
                 </div>
