@@ -81,10 +81,11 @@ const App: React.FC = () => {
       <main className="flex-grow w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-12 lg:pt-24 pb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         
         {/* Left Content - Typography Focus */}
-        <div className="flex flex-col gap-10 z-10 max-w-2xl lg:max-w-3xl">
+        {/* Increased max-width to ensure text doesn't wrap unnecessarily */}
+        <div className="flex flex-col gap-10 z-10 max-w-full lg:max-w-4xl">
           <div className="space-y-6">
             <h2 className="text-6xl md:text-[5rem] leading-[0.95] font-semibold tracking-tighter opacity-0 animate-fade-in-up delay-100">
-              Stop viral{' '}
+              <span className="whitespace-nowrap">Stop viral{' '}</span>
               <span className="relative inline-block min-w-[4ch]">
                  <span 
                     key={currentWordIndex}

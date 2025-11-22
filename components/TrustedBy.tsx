@@ -1,122 +1,115 @@
 import React from 'react';
 
 // SVG Logos components for crisp rendering at any size
-const LogoStripe = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 100 30" fill="currentColor">
-    <path d="M10,15 L20,5 L20,25 L10,15 M30,5 L30,25 L40,25 L40,20 L35,20 L35,17 L40,17 L40,12 L35,12 L35,5 L30,5 Z" fillOpacity="0.9"/>
-    <text x="45" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">STRIPE</text>
+
+const LogoAccenture = () => (
+  <svg className="h-full w-auto" viewBox="0 0 140 40" fill="currentColor">
+    <path d="M10,25 L20,10 L30,25" fill="none" stroke="currentColor" strokeWidth="3" />
+    <text x="35" y="28" fontFamily="sans-serif" fontWeight="bold" fontSize="20" letterSpacing="-1">accenture</text>
   </svg>
 );
 
-const LogoSpotify = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 110 30" fill="currentColor">
-    <circle cx="15" cy="15" r="10" fillOpacity="0.9"/>
-    <path d="M10,12 Q15,8 20,12 M9,15 Q15,11 21,15 M10,18 Q15,15 20,18" stroke="black" strokeWidth="1.5" fill="none"/>
-    <text x="32" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">Spotify</text>
+const LogoMCB = () => (
+  <svg className="h-full w-auto" viewBox="0 0 120 40" fill="currentColor">
+    <rect x="5" y="10" width="20" height="20" rx="2" fill="currentColor" fillOpacity="0.2"/>
+    <path d="M15,10 L15,30 M5,20 L25,20" stroke="currentColor" strokeWidth="2" />
+    <text x="35" y="28" fontFamily="serif" fontWeight="bold" fontSize="22">MCB</text>
   </svg>
 );
 
-const LogoSlack = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 100 30" fill="currentColor">
-    <rect x="5" y="5" width="8" height="8" rx="2" fillOpacity="0.8"/>
-    <rect x="15" y="5" width="8" height="8" rx="2" fillOpacity="0.6"/>
-    <rect x="5" y="15" width="8" height="8" rx="2" fillOpacity="0.6"/>
-    <rect x="15" y="15" width="8" height="8" rx="2" fillOpacity="0.8"/>
-    <text x="32" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">slack</text>
+const LogoArtisan = () => (
+  <svg className="h-full w-auto" viewBox="0 0 180 40" fill="currentColor">
+    <path d="M15,12 C15,12 10,15 10,20 C10,25 15,28 20,28 C25,28 30,25 30,20 C30,15 25,12 25,12" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <path d="M30,15 C32,15 34,17 34,20 C34,23 32,25 30,25" stroke="currentColor" strokeWidth="1.5" fill="none"/>
+    <text x="45" y="26" fontFamily="monospace" fontWeight="bold" fontSize="18" letterSpacing="1">ARTISAN</text>
   </svg>
 );
 
-const LogoNetflix = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 110 30" fill="currentColor">
-    <path d="M10,5 L15,5 L25,25 L25,5 L30,5 L30,25 L25,25 L15,5 L15,25 L10,25 Z" fillOpacity="0.9"/>
-    <text x="40" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">NETFLIX</text>
+const LogoLux = () => (
+  <svg className="h-full w-auto" viewBox="0 0 100 40" fill="currentColor">
+    <text x="5" y="28" fontFamily="serif" fontWeight="bold" fontSize="24">LUX</text>
+    <text x="60" y="15" fontFamily="sans-serif" fontSize="14">*</text>
+    <text x="60" y="28" fontFamily="sans-serif" fontSize="8" letterSpacing="1">RESORTS</text>
   </svg>
 );
 
-const LogoAirbnb = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 100 30" fill="currentColor">
-    <path d="M15,5 C10,5 5,10 5,15 C5,22 15,28 15,28 C15,28 25,22 25,15 C25,10 20,5 15,5 Z M15,20 C12,20 12,15 15,12 C18,15 18,20 15,20 Z" fillOpacity="0.9"/>
-    <text x="35" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">airbnb</text>
+const LogoCiel = () => (
+  <svg className="h-full w-auto" viewBox="0 0 100 40" fill="currentColor">
+    <circle cx="15" cy="20" r="8" stroke="currentColor" strokeWidth="2" fill="none" />
+    <path d="M15,12 L15,20 L20,25" stroke="currentColor" strokeWidth="1.5" />
+    <text x="32" y="27" fontFamily="sans-serif" fontWeight="bold" fontSize="20" letterSpacing="2">CIEL</text>
   </svg>
 );
 
-const LogoUber = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 90 30" fill="currentColor">
-    <circle cx="15" cy="15" r="10" fill="none" stroke="currentColor" strokeWidth="3"/>
-    <rect x="10" y="14" width="10" height="2" fill="currentColor"/>
-    <text x="35" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">Uber</text>
-  </svg>
-);
-
-const LogoNotion = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 100 30" fill="currentColor">
-    <rect x="8" y="5" width="14" height="18" rx="2" fillOpacity="0.9"/>
-    <text x="32" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">Notion</text>
-  </svg>
-);
-
-const LogoDiscord = () => (
-  <svg className="h-7 w-auto" viewBox="0 0 110 30" fill="currentColor">
-    <path d="M10,10 C10,5 20,5 20,10 L20,20 C20,25 10,25 10,20 Z" fillOpacity="0.9"/>
-    <text x="30" y="22" fontFamily="sans-serif" fontWeight="bold" fontSize="16">Discord</text>
+const LogoVendi = () => (
+  <svg className="h-full w-auto" viewBox="0 0 120 40" fill="currentColor">
+    <path d="M10,12 L15,28 L20,12" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    <text x="30" y="28" fontFamily="sans-serif" fontWeight="800" fontSize="20" letterSpacing="-0.5">Vendi</text>
   </svg>
 );
 
 const logos = [
-  { id: 1, Component: LogoStripe },
-  { id: 2, Component: LogoSpotify },
-  { id: 3, Component: LogoSlack },
-  { id: 4, Component: LogoNetflix },
-  { id: 5, Component: LogoAirbnb },
-  { id: 6, Component: LogoUber },
-  { id: 7, Component: LogoNotion },
-  { id: 8, Component: LogoDiscord },
+  { id: 1, Component: LogoAccenture },
+  { id: 2, Component: LogoMCB },
+  { id: 3, Component: LogoLux },
+  { id: 4, Component: LogoCiel },
+  { id: 5, Component: LogoArtisan },
+  { id: 6, Component: LogoVendi },
 ];
 
 export const TrustedBy: React.FC = () => {
   return (
-    <section className="py-10 border-y border-white/5 bg-[#02040a]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-16">
+    <section className="py-14 border-y border-white/5 bg-[#02040a]">
+      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-20">
         
         {/* Static Text Section */}
-        <div className="md:w-48 shrink-0 text-center md:text-left relative z-20 bg-[#02040a] md:bg-transparent">
-           <p className="text-sm text-slate-400 font-medium leading-relaxed">
+        <div className="md:w-56 shrink-0 text-center md:text-left relative z-20 bg-[#02040a] md:bg-transparent">
+           <p className="text-lg text-slate-300 font-medium leading-relaxed tracking-wide">
              Trusted by fast-growing companies around the world
            </p>
         </div>
 
         {/* Scrolling Logos Section */}
-        <div className="flex-1 relative overflow-hidden h-20 flex items-center w-full">
+        <div className="flex-1 relative overflow-hidden h-24 flex items-center w-full">
              
-             {/* Gradient Masks to fade in/out - Stronger mask on left to fade before text */}
-             <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[#02040a] via-[#02040a]/80 to-transparent z-10 pointer-events-none"></div>
-             <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[#02040a] via-[#02040a]/80 to-transparent z-10 pointer-events-none"></div>
+             {/* Gradient Masks to fade in/out */}
+             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#02040a] via-[#02040a]/90 to-transparent z-10 pointer-events-none"></div>
+             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#02040a] via-[#02040a]/90 to-transparent z-10 pointer-events-none"></div>
 
-             {/* Animated Track - Single wrapper moving left */}
+             {/* Animated Track */}
              <div className="flex animate-scroll items-center">
                 
                 {/* First Set */}
-                <div className="flex items-center gap-16 pr-16 shrink-0">
+                <div className="flex items-center gap-20 pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`a-${idx}`} className="text-slate-600 hover:text-white transition-colors duration-500 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`a-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}
                 </div>
 
                 {/* Duplicate Set for Infinite Loop */}
-                <div className="flex items-center gap-16 pr-16 shrink-0">
+                <div className="flex items-center gap-20 pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`b-${idx}`} className="text-slate-600 hover:text-white transition-colors duration-500 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`b-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}
                 </div>
                 
                 {/* Triplicate Set to ensure full coverage on very wide screens */}
-                <div className="flex items-center gap-16 pr-16 shrink-0">
+                <div className="flex items-center gap-20 pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`c-${idx}`} className="text-slate-600 hover:text-white transition-colors duration-500 opacity-70 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`c-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                           <Logo.Component />
+                        </div>
+                    ))}
+                </div>
+                
+                {/* Quadruplicate Set just in case */}
+                <div className="flex items-center gap-20 pr-20 shrink-0">
+                    {logos.map((Logo, idx) => (
+                        <div key={`d-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}
