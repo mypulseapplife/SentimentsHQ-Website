@@ -13,14 +13,14 @@ const TIKTOK_DATA = [
     summary: 'This video led to the permanent shutdown of the business in just 7 days following mass community boycott.'
   },
   {
-    id: '7565632133260234014',
-    url: 'https://www.tiktok.com/@kimmyk561/video/7565632133260234014',
-    company: 'Texas Roadhouse',
-    location: 'West Palm Beach, Florida',
-    views: '18.4M',
-    comments: '52.1k',
-    impact: 'HEALTH CODE VIOLATION',
-    summary: 'Viral exposure of health violations forced an immediate corporate apology, third-party audit, and public PR crisis.'
+    id: '7562367991032155413',
+    url: 'https://www.tiktok.com/@alexbiron/video/7562367991032155413',
+    company: 'Limoncello Miami',
+    location: 'Miami, Florida',
+    views: '22.1M',
+    comments: '48.9k',
+    impact: 'STAFF TERMINATION',
+    summary: 'Aggressive staff behavior caught on camera resulted in immediate terminations and targeted hate campaigns.'
   },
   {
     id: '7569711258534939959',
@@ -43,14 +43,14 @@ const TIKTOK_DATA = [
     summary: 'Patient denial story went viral, pressuring executives to reverse the decision publicly within 48 hours.'
   },
   {
-    id: '7562367991032155413',
-    url: 'https://www.tiktok.com/@alexbiron/video/7562367991032155413',
-    company: 'Limoncello Miami',
-    location: 'Miami, Florida',
-    views: '22.1M',
-    comments: '48.9k',
-    impact: 'STAFF TERMINATION',
-    summary: 'Aggressive staff behavior caught on camera resulted in immediate terminations and targeted hate campaigns.'
+    id: '7565632133260234014',
+    url: 'https://www.tiktok.com/@kimmyk561/video/7565632133260234014',
+    company: 'Texas Roadhouse',
+    location: 'West Palm Beach, Florida',
+    views: '18.4M',
+    comments: '52.1k',
+    impact: 'HEALTH CODE VIOLATION',
+    summary: 'Viral exposure of health violations forced an immediate corporate apology, third-party audit, and public PR crisis.'
   },
   {
     id: '7556755811742092575',
