@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Shield, ChevronRight, Mail, ArrowRight } from 'lucide-react';
 import { Dashboard } from './components/Dashboard';
 import { TikTokSection } from './components/TikTokSection';
+import { TrustedBy } from './components/TrustedBy';
 import { DashboardState } from './types';
 
 // Initial Mock Data
@@ -183,6 +184,9 @@ const App: React.FC = () => {
 
       {/* TikTok Section */}
       <TikTokSection />
+
+      {/* Trusted By Section */}
+      <TrustedBy />
       
       {/* Footer Line */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"></div>
