@@ -48,6 +48,13 @@ const LogoVendi = () => (
   </svg>
 );
 
+const LogoRwazi = () => (
+  <svg className="h-full w-auto" viewBox="0 0 120 40" fill="currentColor">
+    <path d="M10,10 L15,30 L20,15 L25,30 L30,10" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    <text x="38" y="28" fontFamily="sans-serif" fontWeight="900" fontSize="22" letterSpacing="-0.5">Rwazi</text>
+  </svg>
+);
+
 const logos = [
   { id: 1, Component: LogoAccenture },
   { id: 2, Component: LogoMCB },
@@ -55,61 +62,62 @@ const logos = [
   { id: 4, Component: LogoCiel },
   { id: 5, Component: LogoArtisan },
   { id: 6, Component: LogoVendi },
+  { id: 7, Component: LogoRwazi },
 ];
 
 export const TrustedBy: React.FC = () => {
   return (
-    <section className="py-14 border-y border-white/5 bg-[#02040a]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center gap-8 md:gap-20">
+    <section className="py-10 md:py-14 border-y border-white/5 bg-[#02040a]">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row items-center gap-6 md:gap-20">
         
         {/* Static Text Section */}
         <div className="md:w-56 shrink-0 text-center md:text-left relative z-20 bg-[#02040a] md:bg-transparent">
-           <p className="text-lg text-slate-300 font-medium leading-relaxed tracking-wide">
+           <p className="text-base md:text-lg text-slate-300 font-medium leading-relaxed tracking-wide">
              Trusted by fast-growing companies around the world
            </p>
         </div>
 
         {/* Scrolling Logos Section */}
-        <div className="flex-1 relative overflow-hidden h-24 flex items-center w-full">
+        <div className="flex-1 relative overflow-hidden h-20 md:h-24 flex items-center w-full">
              
              {/* Gradient Masks to fade in/out */}
-             <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#02040a] via-[#02040a]/90 to-transparent z-10 pointer-events-none"></div>
-             <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#02040a] via-[#02040a]/90 to-transparent z-10 pointer-events-none"></div>
+             <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#02040a] via-[#02040a]/90 to-transparent z-10 pointer-events-none"></div>
+             <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#02040a] via-[#02040a]/90 to-transparent z-10 pointer-events-none"></div>
 
              {/* Animated Track */}
              <div className="flex animate-scroll items-center">
                 
                 {/* First Set */}
-                <div className="flex items-center gap-20 pr-20 shrink-0">
+                <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`a-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`a-${idx}`} className="h-8 md:h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}
                 </div>
 
                 {/* Duplicate Set for Infinite Loop */}
-                <div className="flex items-center gap-20 pr-20 shrink-0">
+                <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`b-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`b-${idx}`} className="h-8 md:h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}
                 </div>
                 
-                {/* Triplicate Set to ensure full coverage on very wide screens */}
-                <div className="flex items-center gap-20 pr-20 shrink-0">
+                {/* Triplicate Set */}
+                <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`c-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`c-${idx}`} className="h-8 md:h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}
                 </div>
                 
-                {/* Quadruplicate Set just in case */}
-                <div className="flex items-center gap-20 pr-20 shrink-0">
+                {/* Quadruplicate Set */}
+                <div className="flex items-center gap-12 md:gap-20 pr-12 md:pr-20 shrink-0">
                     {logos.map((Logo, idx) => (
-                        <div key={`d-${idx}`} className="h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
+                        <div key={`d-${idx}`} className="h-8 md:h-11 text-slate-400 hover:text-white transition-all duration-500 opacity-80 hover:opacity-100 grayscale hover:grayscale-0 cursor-pointer">
                            <Logo.Component />
                         </div>
                     ))}

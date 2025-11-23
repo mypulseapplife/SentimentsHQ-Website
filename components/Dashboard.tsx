@@ -34,7 +34,7 @@ const PlatformCard: React.FC<{ name: string; percentage: number; trend: 'up' | '
         {name === 'Reddit' && <div className="w-1.5 h-1.5 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]"></div>}
         {name === 'Twitter' && <div className="w-1.5 h-1.5 rounded-full bg-blue-400 shadow-[0_0_8px_rgba(96,165,250,0.6)]"></div>}
         {name === 'Google' && <div className="w-1.5 h-1.5 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>}
-        <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">{name}</div>
+        <div className="text-[10px] text-slate-400 font-semibold uppercase tracking-wider truncate">{name}</div>
       </div>
       <div className="flex items-end justify-between mb-2">
         <div className="text-xl font-bold text-white leading-none tracking-tight">{percentage}%</div>
@@ -91,13 +91,13 @@ const AlertItem: React.FC<{ alert: Alert }> = ({ alert }) => (
         <p className="text-xs text-slate-200 font-medium leading-relaxed mb-2">{alert.message}</p>
         
         <div className="flex items-center justify-between border-t border-white/5 pt-2 mt-1">
-            <div className="flex items-center gap-2">
-                <div className="w-4 h-4 rounded-full bg-white/10 flex items-center justify-center text-slate-400">
+            <div className="flex items-center gap-2 min-w-0">
+                <div className="w-4 h-4 rounded-full bg-white/10 flex items-center justify-center text-slate-400 shrink-0">
                     <AtSign size={8} />
                 </div>
-                <span className="text-[10px] text-slate-400 font-medium truncate max-w-[120px]">{alert.source || 'System'}</span>
+                <span className="text-[10px] text-slate-400 font-medium truncate max-w-[100px] sm:max-w-[120px]">{alert.source || 'System'}</span>
             </div>
-            <span className={`text-[10px] font-bold ${
+            <span className={`text-[10px] font-bold whitespace-nowrap ml-2 ${
                 alert.type === 'CRITICAL' ? 'text-red-400' : 
                 alert.type === 'WARNING' ? 'text-amber-400' : 
                 'text-emerald-400'
@@ -129,9 +129,9 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
   const status = getScoreStatus(data.vibeScore);
 
   return (
-    <div className="flex flex-col h-[640px] p-6 bg-[#0B0F17] text-white select-none">
+    <div className="flex flex-col h-auto lg:h-[640px] p-4 sm:p-6 bg-[#0B0F17] text-white select-none w-full">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 shrink-0">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 shrink-0 gap-4 sm:gap-0">
         <div className="flex items-center gap-3">
            <div className="p-2 rounded-lg bg-brand-purple/10 border border-brand-purple/20">
              <Shield size={16} className="text-brand-purple" />
@@ -139,26 +139,26 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
            <span className="text-sm font-bold tracking-wide text-slate-200">COMMAND CENTER</span>
         </div>
         
-        <div className="flex items-center gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-lg">
+        <div className="flex items-center w-full sm:w-auto overflow-x-auto scrollbar-hide gap-1 bg-white/[0.03] border border-white/5 p-1 rounded-lg">
            <NavItem icon={LayoutDashboard} label="Overview" active />
            <NavItem icon={BrainCircuit} label="Intel" />
            <NavItem icon={Target} label="Tracking" />
            <NavItem icon={FileText} label="Reports" />
         </div>
         
-        <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-xs font-medium text-slate-400">
+        <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/5 text-xs font-medium text-slate-400">
            <Globe size={12} />
            <span>Global</span>
         </div>
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-12 gap-6 flex-grow min-h-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 flex-grow min-h-0">
         
         {/* Left Column: VibeScore & Sentiment Trend */}
-        <div className="col-span-4 flex flex-col gap-4 min-h-0">
+        <div className="col-span-1 lg:col-span-4 flex flex-col gap-4 min-h-0">
             {/* VibeScore Card */}
-            <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 flex flex-col items-center justify-center relative overflow-hidden">
+            <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 flex flex-col items-center justify-center relative overflow-hidden min-h-[240px]">
                 <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
                 <div className="absolute inset-0 bg-gradient-to-b from-brand-purple/5 to-transparent opacity-50"></div>
                 
@@ -175,8 +175,8 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
                 </div>
             </div>
 
-            {/* Sentiment Velocity Chart (Moved Here) */}
-            <div className="flex-grow bg-white/[0.02] border border-white/5 rounded-2xl p-5 flex flex-col min-h-0">
+            {/* Sentiment Velocity Chart */}
+            <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 flex flex-col h-[250px] lg:h-auto lg:flex-grow min-h-0">
                 <div className="flex items-center justify-between mb-4 shrink-0">
                    <div className="flex items-center gap-2">
                        <Activity size={14} className="text-brand-purple" />
@@ -218,16 +218,16 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
         </div>
 
         {/* Right Column: Platforms & Alerts */}
-        <div className="col-span-8 flex flex-col gap-4 min-h-0">
+        <div className="col-span-1 lg:col-span-8 flex flex-col gap-4 min-h-0">
             {/* Platforms Row */}
-            <div className="grid grid-cols-4 gap-3 h-[100px] shrink-0">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 h-auto lg:h-[100px] shrink-0">
                {data.platforms.map(p => (
                    <PlatformCard key={p.name} {...p} />
                ))}
             </div>
 
-            {/* Live Alerts Feed (Moved Here & Expanded) */}
-            <div className="flex-grow bg-white/[0.02] border border-white/5 rounded-2xl p-5 flex flex-col min-h-0 relative overflow-hidden">
+            {/* Live Alerts Feed */}
+            <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-5 flex flex-col relative overflow-hidden h-[400px] lg:h-auto lg:flex-grow min-h-0">
                 {/* Subtle Alert Background Effect */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-red-500/5 blur-3xl rounded-full pointer-events-none"></div>
 
