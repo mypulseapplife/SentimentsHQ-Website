@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { 
   Shield, 
   AlertTriangle, 
@@ -23,7 +23,7 @@ interface DashboardProps {
   loading?: boolean;
 }
 
-const PlatformCard: React.FC<{ name: string; percentage: number; trend: 'up' | 'down'; data: number[] }> = ({ name, percentage, trend, data }) => {
+const PlatformCard: React.FC<{ name: string; percentage: number; trend: 'up' | 'down'; data: number[] }> = memo(({ name, percentage, trend, data }) => {
   const chartData = data.map((val, i) => ({ i, val }));
   const isUp = trend === 'up';
   
@@ -58,9 +58,9 @@ const PlatformCard: React.FC<{ name: string; percentage: number; trend: 'up' | '
       </div>
     </div>
   );
-};
+});
 
-const AlertItem: React.FC<{ alert: Alert }> = ({ alert }) => (
+const AlertItem: React.FC<{ alert: Alert }> = memo(({ alert }) => (
   <div className={`p-3 rounded-lg border backdrop-blur-sm transition-all hover:translate-x-1 group flex items-start gap-3 ${
     alert.type === 'CRITICAL' ? 'bg-red-500/[0.03] border-red-500/10 hover:bg-red-500/[0.06]' : 
     alert.type === 'WARNING' ? 'bg-amber-500/[0.03] border-amber-500/10 hover:bg-amber-500/[0.06]' : 
@@ -105,9 +105,9 @@ const AlertItem: React.FC<{ alert: Alert }> = ({ alert }) => (
         </div>
     </div>
   </div>
-);
+));
 
-const NavItem: React.FC<{ icon: React.ElementType; label: string; active?: boolean }> = ({ icon: Icon, label, active }) => (
+const NavItem: React.FC<{ icon: React.ElementType; label: string; active?: boolean }> = memo(({ icon: Icon, label, active }) => (
   <div className={`flex items-center gap-2 px-3 py-1.5 rounded-md text-[11px] font-medium transition-all cursor-pointer whitespace-nowrap ${
     active 
     ? 'bg-white/10 text-white' 
@@ -116,9 +116,9 @@ const NavItem: React.FC<{ icon: React.ElementType; label: string; active?: boole
     <Icon size={12} className={active ? 'text-brand-purple' : 'text-slate-500'} />
     <span>{label}</span>
   </div>
-);
+));
 
-export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
+export const Dashboard: React.FC<DashboardProps> = memo(({ data, loading }) => {
   const getScoreStatus = (score: number) => {
     if (score >= 80) return { label: 'EXCELLENT', color: 'text-emerald-400', desc: 'Sentiment is peaking. +14% vs last week.' };
     if (score >= 60) return { label: 'STABLE', color: 'text-blue-400', desc: 'Recovering well. +5% this week.' };
@@ -253,4 +253,4 @@ export const Dashboard: React.FC<DashboardProps> = ({ data, loading }) => {
       </div>
     </div>
   );
-};
+});

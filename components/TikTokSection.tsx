@@ -1,17 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import { MessageCircle, Eye, MapPin, Flame, AlertOctagon, Play } from 'lucide-react';
 
 const TIKTOK_DATA = [
-  {
-    id: '7562367991032155413',
-    url: 'https://www.tiktok.com/@alexbiron/video/7562367991032155413',
-    company: 'Limoncello Miami',
-    location: 'Miami, Florida',
-    views: '22.1M',
-    comments: '48.9k',
-    impact: 'STAFF TERMINATION',
-    summary: 'Aggressive staff behavior caught on camera resulted in immediate terminations and targeted hate campaigns.'
-  },
   {
     id: '7565632133260234014',
     url: 'https://www.tiktok.com/@kimmyk561/video/7565632133260234014',
@@ -21,6 +11,16 @@ const TIKTOK_DATA = [
     comments: '52.1k',
     impact: 'HEALTH CODE VIOLATION',
     summary: 'Viral exposure of health violations forced an immediate corporate apology, third-party audit, and public PR crisis.'
+  },
+  {
+    id: '7562367991032155413',
+    url: 'https://www.tiktok.com/@alexbiron/video/7562367991032155413',
+    company: 'Limoncello Miami',
+    location: 'Miami, Florida',
+    views: '22.1M',
+    comments: '48.9k',
+    impact: 'STAFF TERMINATION',
+    summary: 'Aggressive staff behavior caught on camera resulted in immediate terminations and targeted hate campaigns.'
   },
   {
     id: '7530126495008689422',
@@ -64,7 +64,7 @@ const TIKTOK_DATA = [
   }
 ];
 
-export const TikTokSection: React.FC = () => {
+export const TikTokSection: React.FC = memo(() => {
   useEffect(() => {
     // Check if script is already present to avoid duplicates
     const scriptId = 'tiktok-embed-script';
@@ -75,10 +75,6 @@ export const TikTokSection: React.FC = () => {
       script.async = true;
       document.body.appendChild(script);
     } else {
-      // If script exists, we might need to re-trigger it if navigation happened
-      // However, TikTok embed.js usually runs on load. 
-      // For a simple SPA, sometimes we need to reload it or let it handle MutationObserver if supported.
-      // Re-appending helps trigger execution in some browsers if it doesn't observe.
       const existingScript = document.getElementById(scriptId);
       // @ts-ignore
       if (window.tiktok) {
@@ -209,4 +205,4 @@ export const TikTokSection: React.FC = () => {
       </div>
     </section>
   );
-};
+});

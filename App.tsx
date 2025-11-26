@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { Shield, ChevronRight, Mail, ArrowRight } from 'lucide-react';
-import { Dashboard } from './components/Dashboard';
-import { TikTokSection } from './components/TikTokSection';
-import { TrustedBy } from './components/TrustedBy';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
+import { Shield, ArrowRight } from 'lucide-react';
 import { DashboardState } from './types';
+
+// Lazy load heavy components to optimize initial load speed
+const Dashboard = lazy(() => import('./components/Dashboard').then(module => ({ default: module.Dashboard })));
+const TikTokSection = lazy(() => import('./components/TikTokSection').then(module => ({ default: module.TikTokSection })));
+const TrustedBy = lazy(() => import('./components/TrustedBy').then(module => ({ default: module.TrustedBy })));
 
 // Initial Mock Data
 const INITIAL_DATA: DashboardState = {
@@ -44,6 +46,15 @@ const INITIAL_DATA: DashboardState = {
 
 const ROTATING_WORDS = ["threats", "news", "TikTok", "tweets", "threads", "content"];
 
+const DashboardSkeleton = () => (
+  <div className="w-full h-[640px] bg-[#0B0F17] animate-pulse flex items-center justify-center text-slate-700">
+    <div className="flex flex-col items-center gap-4">
+      <div className="w-12 h-12 rounded-full border-2 border-current border-t-transparent animate-spin"></div>
+      <span className="text-xs font-mono tracking-widest uppercase">Initializing Command Center...</span>
+    </div>
+  </div>
+);
+
 const App: React.FC = () => {
   const [dashboardData] = useState<DashboardState>(INITIAL_DATA);
   const [email, setEmail] = useState('');
@@ -70,7 +81,7 @@ const App: React.FC = () => {
         <div className="flex items-center gap-3 md:gap-4 cursor-pointer group">
           <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
              <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-md group-hover:bg-brand-purple/40 transition-all duration-500"></div>
-             <Shield className="relative text-white transition-transform duration-500 group-hover:scale-110" size={20} md-size={26} fill="currentColor" fillOpacity={0.1} strokeWidth={2} />
+             <Shield className="relative text-white transition-transform duration-500 group-hover:scale-110" size={20} fill="currentColor" fillOpacity={0.1} strokeWidth={2} />
           </div>
           <div className="flex flex-col -space-y-0.5">
             <span className="text-lg md:text-xl font-bold tracking-wide">VibeScore</span>
@@ -160,8 +171,10 @@ const App: React.FC = () => {
 
                  {/* Inner Bezel/Screen Container */}
                  <div className="rounded-[1rem] md:rounded-[2rem] overflow-hidden bg-[#0B0F17] border border-white/5 relative isolate">
-                    {/* Dashboard Component */}
-                    <Dashboard data={dashboardData} loading={false} />
+                    {/* Dashboard Component - Lazy Loaded */}
+                    <Suspense fallback={<DashboardSkeleton />}>
+                      <Dashboard data={dashboardData} loading={false} />
+                    </Suspense>
                     
                     {/* Glass Reflection Overlay */}
                     <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-transparent opacity-30 z-20 rounded-[1rem] md:rounded-[2rem]"></div>
@@ -170,7 +183,7 @@ const App: React.FC = () => {
 
             {/* Floating Badge */}
             <div className="absolute -top-3 -right-2 md:-top-5 md:-right-5 z-40 animate-bounce-slow">
-                <div className="flex items-center gap-2 bg-[#0f172a] border border-red-500/30 text-red-500 text-[9px] md:text-[10px] font-bold px-2 md:px-3 py-1 md:py-1.5 rounded-full shadow-xl backdrop-blur-md">
+                <div className="flex items-center gap-2 bg-[#0f1115] border border-red-500/30 text-red-500 text-[9px] md:text-[10px] font-bold px-2 md:px-3 py-1 md:py-1.5 rounded-full shadow-xl backdrop-blur-md">
                     <span className="relative flex h-1.5 w-1.5 md:h-2 md:w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 md:h-2 md:w-2 bg-red-500"></span>
@@ -184,11 +197,15 @@ const App: React.FC = () => {
 
       </main>
 
-      {/* TikTok Section */}
-      <TikTokSection />
+      {/* TikTok Section - Lazy Loaded */}
+      <Suspense fallback={<div className="h-screen bg-[#02040a]"></div>}>
+        <TikTokSection />
+      </Suspense>
 
-      {/* Trusted By Section */}
-      <TrustedBy />
+      {/* Trusted By Section - Lazy Loaded */}
+      <Suspense fallback={<div className="h-20 bg-[#02040a]"></div>}>
+        <TrustedBy />
+      </Suspense>
       
       {/* Footer Line */}
       <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"></div>

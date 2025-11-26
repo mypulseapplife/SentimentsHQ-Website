@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 // SVG Logos components for crisp rendering at any size
 
@@ -65,7 +65,7 @@ const logos = [
   { id: 7, Component: LogoRwazi },
 ];
 
-export const TrustedBy: React.FC = () => {
+export const TrustedBy: React.FC = memo(() => {
   return (
     <section className="py-10 md:py-14 border-y border-white/5 bg-[#02040a]">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 flex flex-col md:flex-row items-center gap-6 md:gap-20">
@@ -128,4 +128,4 @@ export const TrustedBy: React.FC = () => {
       </div>
     </section>
   );
-};
+});
