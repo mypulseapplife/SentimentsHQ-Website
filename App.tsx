@@ -74,10 +74,25 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#02040a] text-white overflow-x-hidden selection:bg-brand-purple/30 selection:text-white flex flex-col font-sans">
+    <div className="min-h-screen bg-[#02040a] text-white overflow-x-hidden selection:bg-brand-purple/30 selection:text-white flex flex-col font-sans relative">
       
+      {/* Background Ambient Animation - "Sentiment Waves" */}
+      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Deep Purple/Blue Blob - Top Left */}
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-purple-900/10 rounded-full blur-[120px] animate-blob mix-blend-screen opacity-50"></div>
+        
+        {/* Cyan/Blue Blob - Top Right/Center */}
+        <div className="absolute top-[10%] right-[-10%] w-[40%] h-[50%] bg-blue-900/10 rounded-full blur-[120px] animate-blob animation-delay-2000 mix-blend-screen opacity-50"></div>
+        
+        {/* Subtle Pink/Red Blob - Bottom Left (Hinting at alerts) */}
+        <div className="absolute bottom-[0%] left-[20%] w-[30%] h-[40%] bg-brand-pink/5 rounded-full blur-[100px] animate-blob animation-delay-4000 mix-blend-screen opacity-30"></div>
+        
+        {/* Noise Overlay for texture */}
+        <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+      </div>
+
       {/* Navbar - Minimal & Premium */}
-      <nav className="w-full py-6 md:py-8 px-4 sm:px-6 md:px-12 flex items-center justify-between max-w-[1400px] mx-auto opacity-0 animate-fade-in duration-1000">
+      <nav className="w-full py-6 md:py-8 px-4 sm:px-6 md:px-12 flex items-center justify-between max-w-[1400px] mx-auto opacity-0 animate-fade-in duration-1000 relative z-20">
         <div className="flex items-center gap-3 md:gap-4 cursor-pointer group">
           <div className="relative w-8 h-8 md:w-10 md:h-10 flex items-center justify-center">
              <div className="absolute inset-0 bg-brand-purple/20 rounded-full blur-md group-hover:bg-brand-purple/40 transition-all duration-500"></div>
@@ -91,7 +106,7 @@ const App: React.FC = () => {
       </nav>
 
       {/* Main Hero Section */}
-      <main className="flex-grow w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 pt-8 md:pt-12 lg:pt-24 pb-20 md:pb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+      <main className="flex-grow w-full max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 pt-8 md:pt-12 lg:pt-24 pb-20 md:pb-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center relative z-10">
         
         {/* Left Content - Typography Focus */}
         <div className="flex flex-col gap-8 md:gap-10 z-10 max-w-full lg:max-w-4xl mx-auto lg:mx-0 text-center lg:text-left">
@@ -158,7 +173,7 @@ const App: React.FC = () => {
         {/* Right Content (Dashboard Preview) */}
         <div className="relative w-full flex items-center justify-center lg:perspective-[2000px] group opacity-0 animate-fade-in-up delay-300 mt-8 lg:mt-0">
           {/* Subtle Atmosphere */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-purple/10 blur-[80px] md:blur-[120px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-purple/10 blur-[80px] md:blur-[120px] rounded-full opacity-40 group-hover:opacity-60 transition-opacity duration-1000 animate-pulse-slow"></div>
           
           {/* iPad Frame Container */}
           <div className="relative w-full max-w-[850px] mx-auto animate-tilt-in delay-300 transition-transform">
@@ -208,7 +223,7 @@ const App: React.FC = () => {
       </Suspense>
       
       {/* Footer Line */}
-      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12"></div>
+      <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12 relative z-10"></div>
     </div>
   );
 };

@@ -129,9 +129,13 @@ export const Dashboard: React.FC<DashboardProps> = memo(({ data, loading }) => {
   const status = getScoreStatus(data.vibeScore);
 
   return (
-    <div className="flex flex-col h-auto lg:h-[640px] p-4 sm:p-6 bg-[#0B0F17] text-white select-none w-full">
+    <div className="flex flex-col h-auto lg:h-[640px] p-4 sm:p-6 bg-gradient-to-br from-[#0f172a] to-[#020617] text-white select-none w-full relative overflow-hidden">
+      
+      {/* Subtle Grid Background */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)', backgroundSize: '40px 40px'}}></div>
+
       {/* Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 shrink-0 gap-4 sm:gap-0">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 shrink-0 gap-4 sm:gap-0 relative z-10">
         <div className="flex items-center gap-3">
            <div className="p-2 rounded-lg bg-brand-purple/10 border border-brand-purple/20">
              <Shield size={16} className="text-brand-purple" />
@@ -153,7 +157,7 @@ export const Dashboard: React.FC<DashboardProps> = memo(({ data, loading }) => {
       </div>
 
       {/* Main Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 flex-grow min-h-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 flex-grow min-h-0 relative z-10">
         
         {/* Left Column: VibeScore & Sentiment Trend */}
         <div className="col-span-1 lg:col-span-4 flex flex-col gap-4 min-h-0">
